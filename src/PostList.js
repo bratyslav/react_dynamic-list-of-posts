@@ -61,9 +61,9 @@ class PostList extends React.Component {
               ? posts
                   .filter(post => {
                     const filter = filterText.toLowerCase();
+                    const textToFilter = (post.title + post.body).toLowerCase();
 
-                    return post.title.toLowerCase().indexOf(filter) !== -1
-                    || post.body.toLowerCase().indexOf(filter) !== -1
+                    return textToFilter.indexOf(filter) !== -1
                   })
                   .map(post => (
                     <div>
