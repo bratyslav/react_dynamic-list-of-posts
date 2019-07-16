@@ -1,6 +1,7 @@
 import React from 'react';
 import { comments, posts, users } from './api/data';
 import Post from './components/Post';
+import FilterPost from './components/FilterPost';
 
 class PostList extends React.Component {
   state = {
@@ -66,14 +67,7 @@ class PostList extends React.Component {
                     return textToFilter.indexOf(filter) !== -1
                   })
                   .map(post => (
-                    <div>
-                      <h2 className="post__title">
-                        {post.title}
-                      </h2>
-                      <div className="post__body post__filtered">
-                        {post.body}
-                      </div>
-                    </div>
+                    <FilterPost post={post} />
                   ))
               : posts.map(post => (
                   <Post
