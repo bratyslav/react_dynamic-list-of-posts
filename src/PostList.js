@@ -66,7 +66,12 @@ class PostList extends React.Component {
                     return textToFilter.indexOf(filter) !== -1
                   })
                   .map(post => (
-                    <FilterPost post={post} />
+                    <Post
+                      postId={post.id}
+                      posts={posts}
+                      users={users}
+                      comments={comments}
+                    />
                   ))
               : posts.map(post => (
                   <Post
