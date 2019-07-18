@@ -1,7 +1,6 @@
 import React from 'react';
 import { comments, posts, users } from './api/data';
 import Post from './components/Post';
-import FilterPost from './components/FilterPost';
 
 class PostList extends React.Component {
   state = {
