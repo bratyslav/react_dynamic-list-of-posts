@@ -47,6 +47,18 @@ button {
   color:black;
 }
 
+.post__comments-list-title h3{
+  cursor: pointer;
+  padding: 4px;
+  border: 1px solid grey;
+
+  display: inline;
+}
+
+.post__comments-list-title h3:hover {
+  background-color: rgb(211, 211, 211);
+}
+
 .post__comment {
   margin-top: 10px;
 }
