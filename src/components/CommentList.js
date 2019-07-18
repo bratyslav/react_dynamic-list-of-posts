@@ -1,5 +1,6 @@
 import React from 'react';
 import Comment from './Comment';
+import PropTypes from 'prop-types';
 
 class CommentList extends React.Component {
   state = {
@@ -36,6 +37,11 @@ class CommentList extends React.Component {
       </div>
     )
   }
+};
+
+CommentList.propTypes = {
+  postId: PropTypes.number.isRequired,
+  comments: PropTypes.array.isRequired
 };
 
 export default CommentList;

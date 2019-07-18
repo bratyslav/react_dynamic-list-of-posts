@@ -16,7 +16,6 @@ class PostList extends React.Component {
 
   loadData = () => {
     this.setState({ loading: true });
-    console.log('start')
 
     comments()
       .then(data => {
@@ -88,5 +87,7 @@ class PostList extends React.Component {
     );
   };
 };
+
+
 
 export default PostList;

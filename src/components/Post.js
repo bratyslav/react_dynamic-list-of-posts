@@ -1,6 +1,7 @@
 import React from 'react';
 import User from './User';
 import CommentList from './CommentList';
+import PropTypes from 'prop-types';
 
 const Post = ({ postId, posts, users, comments }) => {
   const post = posts.find((post) => post.id === postId);
@@ -22,6 +23,13 @@ const Post = ({ postId, posts, users, comments }) => {
       />
     </div>
   );
+};
+
+Post.propTypes = {
+  postId: PropTypes.number.isRequired,
+  comments: PropTypes.array.isRequired,
+  posts: PropTypes.array.isRequired,
+  users: PropTypes.array.isRequired
 };
 
 export default Post;
