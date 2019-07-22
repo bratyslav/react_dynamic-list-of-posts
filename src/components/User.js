@@ -16,16 +16,7 @@ const User = ({ person }) => (
 );
 
 User.propTypes = {
-  person: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    username: PropTypes.string,
-    email: PropTypes.string,
-    address: PropTypes.object,
-    phone: PropTypes.string,
-    website: PropTypes.string,
-    company: PropTypes.object
-  }).isRequired
+  person: PropTypes.object.isRequired
 };
 
 export default User;

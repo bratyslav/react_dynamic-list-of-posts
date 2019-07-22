@@ -1,5 +1,5 @@
 import React from 'react';
-import { comments, posts, users } from './api/data';
+import { getComments, getPosts, getUsers } from './api/data';
 import Post from './components/Post';
 
 class PostList extends React.Component {
@@ -16,32 +16,55 @@ class PostList extends React.Component {
   loadData = () => {
     this.setState({ loading: true });
 
-    comments()
+    getComments()
       .then(data => {
         this.setState({ comments: data });
       })
 
-    posts()
+    getPosts()
       .then(data => {
         this.setState({ posts: data });
       })
 
-    users()
+    getUsers()
       .then(data => {
         this.setState({ users: data });
       })
       .then(() => this.setState({ loaded: true }));
   };
 
-  filter = (event) => {
+  setFilter = (event) => {
     this.setState({ filterText: event.target.value });
   };
 
+  todoFilter = (posts) => {
+    const { filterText } = this.state;
+
+    return posts.filter(post => {
+      const filter = filterText.toLowerCase();
+      const textToFilter = (post.title + post.body).toLowerCase();
+
+      return textToFilter.indexOf(filter) !== -1
+    })
+  };
+
+  todoMap = (posts) => {
+    const { users, comments } = this.state;
+
+    return posts.map(post => (
+      <Post
+        key={post.id}
+        postId={post.id}
+        posts={posts}
+        users={users}
+        comments={comments}
+      />
+    ))
+  }
+
   render() {
     const {
-      comments,
       posts,
-      users,
       loading,
       loaded,
       filterText
@@ -53,39 +76,19 @@ class PostList extends React.Component {
           <input
             type="text"
             placeholder="Search..."
-            onChange={this.filter}
+            onChange={this.setFilter}
           ></input>
           {
             filterText
-              ? posts
-                  .filter(post => {
-                    const filter = filterText.toLowerCase();
-                    const textToFilter = (post.title + post.body).toLowerCase();
-
-                    return textToFilter.indexOf(filter) !== -1
-                  })
-                  .map(post => (
-                    <Post
-                      postId={post.id}
-                      posts={posts}
-                      users={users}
-                      comments={comments}
-                    />
-                  ))
-              : posts.map(post => (
-                  <Post
-                    postId={post.id}
-                    posts={posts}
-                    users={users}
-                    comments={comments}
-                  />
-                ))
+              ? this.todoMap(this.todoFilter(posts))
+              : this.todoMap(posts)
           }
         </div>
 
       : <button
           onClick={this.loadData}
           className="load-button"
+          disabled={loading}
         >
           {loading ? 'Loading...' : 'Load'}
         </button>  

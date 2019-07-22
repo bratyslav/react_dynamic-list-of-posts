@@ -1,5 +1,4 @@
 import React from 'react';
-import Comment from './Comment';
 import PropTypes from 'prop-types';
 
 class CommentList extends React.Component {
@@ -7,21 +6,21 @@ class CommentList extends React.Component {
     isVisible: false
   }
 
-  commentsShow = () => {
+  commentsToggle = () => {
     this.setState((prevState) => (
       { isVisible: !prevState.isVisible }
     ))
   }
 
   render() {
-    const { comments, postId } = this.props;
+    const { comments } = this.props;
     const { isVisible } = this.state;
 
     return (
       <div className="post__comments-list">
         <div
           className="post__comments-list-title"
-          onClick={this.commentsShow}
+          onClick={this.commentsToggle}
         >
           <h3>
             Comments
@@ -30,8 +29,6 @@ class CommentList extends React.Component {
         {
           isVisible
           ? comments
-              .filter((comment) => comment.postId === postId)
-              .map((comment) => <Comment comment={comment} />)
           : ''    
         }
       </div>
@@ -40,7 +37,6 @@ class CommentList extends React.Component {
 };
 
 CommentList.propTypes = {
-  postId: PropTypes.number.isRequired,
   comments: PropTypes.array.isRequired
 };
 

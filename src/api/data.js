@@ -1,4 +1,4 @@
-export const comments = async() => {
+export const getComments = async() => {
   const url = 'https://jsonplaceholder.typicode.com/comments';
   const response = await fetch(url);
   const comments = await response.json();
@@ -6,7 +6,7 @@ export const comments = async() => {
   return comments;
 };
 
-export const posts = async() => {
+export const getPosts = async() => {
   const url = 'https://jsonplaceholder.typicode.com/posts';
   const response = await fetch(url);
   const posts = await response.json();
@@ -14,7 +14,7 @@ export const posts = async() => {
   return posts;
 };
 
-export const users = async() => {
+export const getUsers = async() => {
   const url = 'https://jsonplaceholder.typicode.com/users';
   const response = await fetch(url);
   const users = await response.json();

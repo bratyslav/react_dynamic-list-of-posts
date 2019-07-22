@@ -2,6 +2,13 @@ import React from 'react';
 import User from './User';
 import CommentList from './CommentList';
 import PropTypes from 'prop-types';
+import Comment from './Comment';
+
+const getComments = (comments, postId) => {
+  return comments
+    .filter((comment) => comment.postId === postId)
+    .map((comment) => <Comment comment={comment} key={comment.id} />)
+}
 
 const Post = ({ postId, posts, users, comments }) => {
   const post = posts.find((post) => post.id === postId);
@@ -17,9 +24,8 @@ const Post = ({ postId, posts, users, comments }) => {
       <User 
         person={users.find((person) => person.id === post.userId)}
       />
-      <CommentList 
-        postId={postId}
-        comments={comments}
+      <CommentList
+        comments={getComments(comments, postId)}
       />
     </div>
   );
