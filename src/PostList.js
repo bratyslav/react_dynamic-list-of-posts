@@ -85,6 +85,7 @@ class PostList extends React.Component {
 
       : <button
           onClick={this.loadData}
+          className="load-button"
         >
           {loading ? 'Loading...' : 'Load'}
         </button>  
