@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './App.css';
-import PostList from './PostList';
+import App from './App';
 
 ReactDOM.render(
-  <PostList />,
+  <App />,
   document.getElementById('root')
 );

@@ -1,69 +1,24 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  color: rgb(80, 80, 80);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  background-color: rgb(233, 233, 233);
+.App {
+  text-align: center;
 }
 
-.load-button {
-  margin-top: 45vh;
-  font-size: 20px;
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
 }
 
-.posts-list {
-  width: 700px;
-  background-color: white;
-  padding: 10px 50px;
-  box-shadow: 7px -1px 5px 1px rgba(184,182,184,1);
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
 }
 
-.post__title {
-  font-size: 25px;
-  color: black;
+.App-intro {
+  font-size: large;
 }
 
-.post__body {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: black;
-}
-
-.post__filtered {
-  margin-bottom: 60px;
-}
-
-.post__comments-list {
-  padding: 0 50px 70px 50px;
-}
-
-.post__comments-list-title {
-  margin-top: 15px;
-  font-size: 20px;
-  color:black;
-}
-
-.post__comments-list-title h3{
-  cursor: pointer;
-  padding: 4px;
-  border: 1px solid grey;
-
-  display: inline;
-}
-
-.post__comments-list-title h3:hover {
-  background-color: rgb(211, 211, 211);
-}
-
-.post__comment {
-  margin-top: 10px;
-}
-
-.post__comment-body {
-  font-size: 15px;
-  color: black;
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
