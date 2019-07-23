@@ -12,8 +12,14 @@ class PostList extends React.Component {
     this.setState({ filter: value.toLowerCase() });
   };
 
-  render() {
+  filterPostList = (post) => {
     const { filter } = this.state;
+    const searchStr = (post.title + post.body).toLowerCase();
+
+    return searchStr.indexOf(filter) !== -1;
+  };
+
+  render() {
     const { postList } = this.props;
 
     return (
@@ -26,13 +32,9 @@ class PostList extends React.Component {
 
         {
           postList
-            .filter(post => {
-              const searchStr = (post.title + post.body).toLowerCase();
-
-              return searchStr.indexOf(filter) !== -1;
-            })
+            .filter(post => this.filterPostList(post))
             .map(post => (
-              <Post post={post} />
+              <Post post={post} key={post.body} />
             ))
         }
       </React.Fragment>

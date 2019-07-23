@@ -25,7 +25,9 @@ class CommentList extends React.Component {
 
         {
           isVisible
-          ? comments.map(comment => <Comment comment={comment} />)
+          ? comments.map(comment => (
+              <Comment comment={comment} key={comment.body} />
+            ))
           : ''  
         }
       </div>
